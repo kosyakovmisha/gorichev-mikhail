@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Enter the distance in kilometers or 'q' for quit:");
         distance = getValue();
 
-        pricePerKm = getKmProperty(distance, KG_PROPERTIES_FILE_PATH);
+        pricePerKm = getKmProperty(distance);
 
         System.out.println("====================Values=====================");
         System.out.println("weight = " + weight);
@@ -33,6 +33,7 @@ public class Main {
         System.out.println("pricePerKg = " + pricePerKg);
         System.out.println("pricePerKm = " + pricePerKm);
         System.out.println("===============================================");
+
         BigDecimal price = weight.multiply(pricePerKg).add(distance.multiply(pricePerKm));
         System.out.println("Price = " + price);
     }
@@ -73,13 +74,13 @@ public class Main {
         return new BigDecimal(tempString);
     }
 
-    private static BigDecimal getKmProperty(BigDecimal distance, String path) {
+    private static BigDecimal getKmProperty(BigDecimal distance) {
         BigDecimal less10 = DEFAULT_PRICE_PER_KM;
         BigDecimal less100 = DEFAULT_PRICE_PER_KM;
         BigDecimal less500 = DEFAULT_PRICE_PER_KM;
         BigDecimal more500 = DEFAULT_PRICE_PER_KM;
         try {
-            FileInputStream fileInputStream = new FileInputStream(path);
+            FileInputStream fileInputStream = new FileInputStream(KG_PROPERTIES_FILE_PATH);
             Properties props = new Properties();
             props.load(fileInputStream);
             less10 = new BigDecimal(props.getProperty("less10"));
