@@ -1,6 +1,8 @@
 package com.epam.brest2019.courses;
 
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class InputWorker {
@@ -38,5 +40,16 @@ public class InputWorker {
             tempString = scanner.nextLine();
         }
         return new BigDecimal(tempString);
+    }
+
+    public static BigDecimal getMultiplier() {
+        //LocalDate localDate = LocalDate.of(2019, 06, 22);
+                LocalDate localDate = LocalDate.now();
+        java.time.DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+        if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+            return new BigDecimal("1.3");
+        } else {
+            return new BigDecimal("1.0");
+        }
     }
 }
