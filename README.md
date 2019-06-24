@@ -1,6 +1,6 @@
 Back-end training repository
 ==
-My name is Gorichev Mikhail, Im learning back-end technologies in EPAM traning center.You can find here things Im working on during the course.
+My name is Mikhail Gorichev, Im learning back-end technologies in EPAM traning center.You can find here things Im working on during the course.
 
 Navigation
 --
